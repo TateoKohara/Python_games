@@ -131,7 +131,55 @@ class Game:
 
         self.snake.move_snake(self.snake.direction)
 
-        
+        self.effect.run(self.effect_trigger, self.snake.x, self.snake.y)
 
-                  
+        self.effect_trigger = False
 
+        pygame.display.update()
+
+        self.clock.tick(self.fps)
+
+    def game_over(self):
+        """
+        ゲームオーバー処理
+        """
+        pygame.mixer.music.stop()
+
+        self.sound_game_over.play()
+
+        while True:
+
+            self.surf.blit(self.font_end.render(f'YOUR SCORE:{self.score}', 1, (255, 165, 0)), (self.WIDTH // 2 -130, self.HEIGHT // 3))
+
+            mouse_coord = pygame.mouse.get_pos()
+
+            mouse_events = pygame.mouse.get_pressed()
+
+
+            if self.WIDTH // 2 - 50 < mouse_coord[0] < self.WIDTH // 2 + 50 and \
+              self.HEIGHT // 2 - 50 < mouse_coord[1] < self.HEIGHT // 2 -10:
+
+                pygame.draw.rect(self.surf, self.GREEN, (self.WIDTH // 2 - 50, self.HEIGHT // 2 -50, 100, 40))
+
+                if mouse_events[0]:
+                    break
+
+            else:
+                pygame.draw.rect(self.surf, self.RED, (self.WIDTH // 2 - 50, self.HEIGHT // 2 -50, 100, 40))
+
+            self.surf.blit(self.font_button.render("RETRY", 1, self.BLACK), (self.WIDTH // 2 - 33, self.HEIGHT // 2 - 40))
+
+            self.clock.tick(self.fps)
+
+            pygame.display.update()
+
+
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+        Game()   
+
+    if __name__ == "__main__":
+        Game()                      
