@@ -28,16 +28,16 @@ class Game:
 
         pygame.init()
 
-        pygame.mixer.music.load("System/Sounds/music.mid")
+        # pygame.mixer.music.load("System/Sounds/music.mid")
 
-        pygame.mixer.music.play(9)
+        # pygame.mixer.music.play(9)
 
         pygame.display.set_caption("Snake")
 
 
-        self.sound_game_over = pygame.mixer.Sound("System/Sounds/game_over.wav")
+        # self.sound_game_over = pygame.mixer.Sound("System/Sounds/game_over.wav")
 
-        self.sound_eat_food = pygame.mixer.Sound("System/Sounds/eat_food.wav")
+        # self.sound_eat_food = pygame.mixer.Sound("System/Sounds/eat_food.wav")
 
         self.surf = pygame.display.set_mode(self.SIZE)
 
@@ -91,7 +91,7 @@ class Game:
                 if self.snake.direction != "u":
                   self.snake.direction = "d"
 
-            if self.food_is_eaten(self.snake.x, self.snake.y, self.snake.SIDE):
+            if self.food.is_eaten(self.snake.x, self.snake.y, self.snake.SIDE):
                 self.sound_eat_food.play()
                 self.snake.add_length()
                 self.effect_trigger = True
@@ -99,7 +99,7 @@ class Game:
                 self.score += 1
                 self.fps += 1
 
-            if(self.snake.x < 0 or self.snake.y < 0 or self.snake.x + self.snake.SIDE > self.WIDTH or self.y + snake.SIDE > self.HEIGHT) or len(self.snake.xy) != len(set(self.snake.XY)):
+            if(self.snake.x < 0 or self.snake.y < 0 or self.snake.x + self.snake.SIDE > self.WIDTH or self.snake.y + self.snake.SIDE > self.HEIGHT) or len(self.snake.XY) != len(set(self.snake.XY)):
                 self.game_over()
 
             self.draw()    
@@ -112,7 +112,7 @@ class Game:
 
         self.bg.draw(self.snake.direction)
 
-        self.add_food()
+        self.food.add_food()
 
         self.snake.move_snake(self.snake.direction)
 
