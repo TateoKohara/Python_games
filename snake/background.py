@@ -2,9 +2,7 @@ import pygame
 from random import randint, randrange
 
 class BG:
-    """
-    BGクラス
-    """
+    
     def __init__(self, surface):
         self.surf = surface
 
@@ -26,9 +24,7 @@ class BG:
 
 
     def draw(self, direction):
-        """
-        背景を描画
-        """
+        
         if direction == "l":
             self.x = [x + r for x, r in zip(self.x, self.speed)]
 

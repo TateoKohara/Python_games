@@ -2,9 +2,7 @@ import pygame
 from random import randint, choice
 
 class Effect:
-    """
-    Effectクラス
-    """
+    
     RANGE = 30
     NUMBER = 15
 
@@ -15,9 +13,7 @@ class Effect:
 
 
     def __init__(self, surf):
-        """
-        初期化関数
-        """
+        
         self.surf = surf
 
 

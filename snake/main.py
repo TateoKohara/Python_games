@@ -9,11 +9,6 @@ from background import *
 from effects import *
 
 class Game:
-    """
-    Gameクラス
-
-    Game全体を管理するクラス
-    """
     SIZE = WIDTH, HEIGHT = (800, 800)
 
     WHITE = (255, 255, 255)
@@ -25,11 +20,8 @@ class Game:
     score = 0
 
     def __init__(self):
-        """
-        初期化関数
-        """
-        os.environ["SDL_VIDEO_WINDOW_POS"] = f'{(tk.TK().winfo_screenwidth() - self.WIDTH) // 2}'
-        f'{(tk.TK().winfo_screenheight() - self.HEIGHT) // 2}'
+        os.environ["SDL_VIDEO_WINDOW_POS"] = f'{(tk.Tk().winfo_screenwidth() - self.WIDTH) // 2},' \
+      f'{(tk.Tk().winfo_screenheight() - self.HEIGHT) // 2}'
 
         pygame.mixer.pre_init(44100, -16, 2, 2046)
         pygame.mixer.init()
@@ -73,11 +65,6 @@ class Game:
         self.play()
 
     def play(self):
-        """
-        キー操作
-        foodを食べた時の処理
-        ゲームオーバー判定
-        """
 
         while True:
 
@@ -118,9 +105,7 @@ class Game:
             self.draw()    
 
     def draw(self):
-        """
-        描画関数
-        """
+        
         self.surf.fill(self.BLACK)
 
         self.surf.blit(self.font_score.render(f'SCORE:{self.score}', 1 , (255, 165, 0)), (self.WIDTH -90, 5))
@@ -140,9 +125,7 @@ class Game:
         self.clock.tick(self.fps)
 
     def game_over(self):
-        """
-        ゲームオーバー処理
-        """
+        
         pygame.mixer.music.stop()
 
         self.sound_game_over.play()
@@ -181,5 +164,5 @@ class Game:
 
         Game()   
 
-    if __name__ == "__main__":
-        Game()                      
+if __name__ == "__main__":
+    Game()                      
