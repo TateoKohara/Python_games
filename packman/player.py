@@ -1,5 +1,6 @@
 import pygame
 
+
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 576
 
@@ -18,14 +19,14 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = pygame.image.load(filename).convert()
-        self.image_set_colorkey(BLACK)
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
 
-        img = pygame.image.load("Player.png").convert()
+        img = pygame.image.load("player.png").convert()
 
         self.move_right_animation = Animation(img, 32, 32)
-        self.move_left_animation = Animation(pygame.transform,flip(img, True, False), 32, 32)
+        self.move_left_animation = Animation(pygame.transform.flip(img, True, False), 32, 32)
         self.move_up_animation = Animation(pygame.transform.rotate(img, 90), 32, 32)
         self.move_down_animation = Animation(pygame.transform.rotate(img, 270), 32, 32)
 
@@ -137,7 +138,7 @@ class Animation(object):
 
         self.sprite_sheet = img
         self.image_list = []
-        self.load_image(width, height)
+        self.load_images(width, height)
         self.index = 0
         self.clock = 1
 
@@ -180,4 +181,3 @@ class Animation(object):
             self.index += 1
             if self.index == len(self.image_list):
                 self.index == 0
-                     

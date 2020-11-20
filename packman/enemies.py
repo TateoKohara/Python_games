@@ -24,12 +24,12 @@ class Block(pygame.sprite.Sprite):
 
 class Ellipse(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, color, width, height):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.Surface({width, height})
+        self.image = pygame.Surface([width, height])
         self.image.fill(BLACK)
-        self.set_colorkey(BLACK)
+        self.image.set_colorkey(BLACK)
 
         pygame.draw.ellipse(self.image, color, [0, 0, width, height])
         self.rect = self.image.get_rect()
@@ -64,7 +64,7 @@ class Slime(pygame.sprite.Sprite):
             self.rect.bottom = 0
 
         if self.rect.topleft in self.get_intersection_position():
-            direction = random.choice(("left", "right", "uo", "down"))
+            direction = random.choice(("left", "right", "up", "down"))
 
             if direction == "left" and self.change_x == 0:
                 self.change_x = -2
@@ -125,4 +125,4 @@ def draw_enviroment(screen):
             elif item == 2:
                 pygame.draw.line(screen, BLUE, [j*32, i*32], [j*32, i*32+32], 3)
                 pygame.draw.line(screen, BLUE, [j*32+32, i*32], [j*32+32, i*32+32], 3)
-                
+

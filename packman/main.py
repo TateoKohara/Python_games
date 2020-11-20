@@ -13,7 +13,7 @@ def main():
 
     done = False
 
-    clock = pygame.time.CLock()
+    clock = pygame.time.Clock()
 
     game = Game()
 

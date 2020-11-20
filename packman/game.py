@@ -1,5 +1,5 @@
 import pygame
-from player import player
+from player import Player
 from enemies import *
 import tkinter
 from tkinter import messagebox
@@ -68,17 +68,17 @@ class Game(object):
             for j, item in enumerate(row):
 
                 if item != 0:
-                    self.dots_group.add(Ellipse(j*32+12, i*32+12, WHITE, 8, 8))
+                    self.dots_group.add(Ellipse(j*32+12,i*32+12,WHITE,8,8))
 
 
     def process_events(self):
 
         for event in pygame.event.get():
 
-            if event.type == pygame.QUIT():
+            if event.type == pygame.QUIT:
                 return True
 
-            self.menu_event_handler(event)
+            self.menu.event_handler(event)
 
             if event.type == pygame.KEYDOWN:
 
