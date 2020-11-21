@@ -1,6 +1,6 @@
 import pygame
-from player import Player
-from enemies import *
+from player import Player, Animation
+from enemies import Block, Ellipse, Slime, enviroment, draw_enviroment
 import tkinter
 from tkinter import messagebox
 
