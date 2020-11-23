@@ -84,14 +84,14 @@ class Slime(pygame.sprite.Sprite):
 
         items = []
 
-        for i, row, in enumerate(enviroment()):
+        for i, row, in enumerate(environment()):
             for j, item in enumerate(row):
                 if item ==3:
                     items.append((j*32, i*32))
         return items
 
 
-def enviroment():
+def environment():
 
     grid = ((0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0),
             (0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0),
@@ -115,9 +115,9 @@ def enviroment():
     return grid
 
 
-def draw_enviroment(screen):
+def draw_environment(screen):
 
-    for i, row in enumerate(enviroment()):
+    for i, row in enumerate(environment()):
         for j, item in enumerate(row):
             if item == 1:
                 pygame.draw.line(screen, BLUE, [j*32, i*32], [j*32+32, i*32], 3)

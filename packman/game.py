@@ -1,6 +1,6 @@
 import pygame
 from player import Player, Animation
-from enemies import Block, Ellipse, Slime, enviroment, draw_enviroment
+from enemies import Block, Ellipse, Slime, environment, draw_environment
 import tkinter
 from tkinter import messagebox
 
@@ -35,7 +35,7 @@ class Game(object):
 
         self.dots_group = pygame.sprite.Group()
 
-        for i, row in enumerate(enviroment()):
+        for i, row in enumerate(environment()):
 
             for j, item in enumerate(row):
                 
@@ -63,7 +63,7 @@ class Game(object):
 
         self.enemies.add(Slime(448, 320, 2, 0))
 
-        for i, row in enumerate(enviroment()):
+        for i, row in enumerate(environment()):
 
             for j, item in enumerate(row):
 
@@ -158,7 +158,7 @@ class Game(object):
         else:
             self.horizontal_blocks.draw(screen)
             self.vertical_blocks.draw(screen)
-            draw_enviroment(screen)
+            draw_environment(screen)
             self.dots_group.draw(screen)
             self.enemies.draw(screen)
             screen.blit(self.player.image, self.player.rect)
